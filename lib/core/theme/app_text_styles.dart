@@ -28,6 +28,8 @@ abstract class AppTextStyles {
   TextStyle get headerTextContrast;
   TextStyle get appBarTitle;
   TextStyle get titleGroup;
+  TextStyle get textSnackBar;
+  TextStyle get textTooltip;
 
   /*---------------TEXTSTYLE SETTINGS---------------*/
   TextStyle get appBarTitleSettings;
@@ -223,6 +225,20 @@ class AppTextStylesDefault implements AppTextStyles {
         fontWeight: FontWeight.w700,
         height: 29 / 24,
         color: AppTheme.colors.textBold,
+      );
+
+  @override
+  TextStyle get textSnackBar => GoogleFonts.inter(
+        fontSize: 10.sp,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      );
+
+  @override
+  TextStyle get textTooltip => GoogleFonts.inter(
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w400,
+        color: Colors.white,
       );
 
   /*---------------TEXTSTYLE SETTINGS---------------*/
