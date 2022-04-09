@@ -57,7 +57,7 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 22,
         fontWeight: FontWeight.w700,
         height: 27 / 22,
-        color: AppTheme.colors.textBold,
+        color: AppTheme.colors.textGradient,
       );
 
   @override

@@ -3,17 +3,21 @@ import 'package:split_it_ignite/core/config/app_config_page.dart';
 import 'package:split_it_ignite/modules/splash/splash_page.dart';
 import 'package:split_it_ignite/modules/login/login_page.dart';
 
+import '../../domain/login/model/user_model.dart';
+import '../../modules/home/home_page.dart';
+
 class RouterClass {
   //STRINGS DAS ROTAS
   static const String initial = "/";
   static const String splash = "/splash";
   static const String login = "/login";
+  static const String home = "/home";
 
   //FUNÇÃO DE GERAÇÃO DE ROTAS
-  static Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic> generateRoute(RouteSettings routeSettings) {
     // Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
     //PROCURA A ROTA
-    switch (settings.name) {
+    switch (routeSettings.name) {
       //ROTA DA SPLASH
       case splash:
         return MaterialPageRoute(
@@ -21,6 +25,12 @@ class RouterClass {
 
       case login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
+
+      case home:
+        Map<String, dynamic> arguments =
+            routeSettings.arguments as Map<String, dynamic>;
+        UserModel user = arguments["user"];
+        return MaterialPageRoute(builder: (_) => HomePage(user: user));
 
       //ROTA COM INICIAL DE CONFIGURAÇÕES
       case initial:
@@ -31,7 +41,7 @@ class RouterClass {
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(
-                child: Text('Não há rota definida para ${settings.name}')),
+                child: Text('Não há rota definida para ${routeSettings.name}')),
           ),
         );
     }

@@ -1,3 +1,4 @@
+import '../../i18n/i18n_const.dart';
 import '/modules/splash/splash_page.dart';
 
 import '/core/core.dart';
@@ -31,10 +32,10 @@ class _AppConfigPageState extends State<AppConfigPage> {
           key: UniqueKey(),
         );
       } else {
-        body = const Material(
+        body = Material(
           child: Center(
             child: Text(
-              'I18nConst.erroConfigApp',
+              I18nConst.erroConfigApp,
               textDirection: TextDirection.ltr,
             ),
           ),

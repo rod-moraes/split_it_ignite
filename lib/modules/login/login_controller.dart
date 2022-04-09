@@ -64,9 +64,9 @@ abstract class _LoginControllerBase with Store {
         showSnackBar(context, message, Colors.green);
         Navigator.pushNamedAndRemoveUntil(
           context,
-          'RouterClass.notes',
+          RouterClass.home,
           (Route<dynamic> route) => false,
-          arguments: (loginState as LoginStateSuccess).result,
+          arguments: {'user': (loginState as LoginStateSuccess).result},
         );
       }
     });

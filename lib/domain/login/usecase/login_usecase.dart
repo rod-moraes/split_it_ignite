@@ -25,7 +25,7 @@ class LoginUseCase implements ILoginUseCase {
       // throw "Teste falha";
       return user;
     } catch (e) {
-      await signOutGoogle();
+      //await signOutGoogle();
       rethrow;
     }
   }

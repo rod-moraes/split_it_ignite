@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/core.dart';
+import '../../../i18n/i18n_const.dart';
 import '../cart_text_widget/card_text_widget.dart';
 
 class AlertDialogSettings extends StatelessWidget {
@@ -29,7 +30,7 @@ class AlertDialogSettings extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                'I18nConst.infoUser',
+                I18nConst.infoUser,
                 style: AppTheme.textStyles.titleAlertDialog,
               ),
             ),
@@ -46,12 +47,12 @@ class AlertDialogSettings extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CardTextWidget(
-                title: 'I18nConst.name',
+                title: I18nConst.name,
                 subtitle: 'user.name',
               ),
               SizedBox(height: 1.h),
               CardTextWidget(
-                title: 'I18nConst.email',
+                title: I18nConst.email,
                 subtitle: 'user.email',
               ),
               SizedBox(height: 1.h),
@@ -68,8 +69,7 @@ class AlertDialogSettings extends StatelessWidget {
                   Border.all(color: AppTheme.colors.border, width: borderWidth),
             ),
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.h),
-            child:
-                Text('I18nConst.quit', style: AppTheme.textStyles.textButton),
+            child: Text(I18nConst.quit, style: AppTheme.textStyles.textButton),
           ),
           onTap: yesPress,
         ),

@@ -7,6 +7,7 @@ import 'package:localization/localization.dart';
 import 'package:mobx/mobx.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../i18n/i18n_const.dart';
 import '../core.dart';
 //import '/firebase_options.dart';
 part 'app_config_controller.g.dart';
@@ -67,7 +68,7 @@ abstract class AppConfigControllerBase with Store {
       return _locale;
     } catch (e) {
       errorMessage = e.toString();
-      throw "I18nConst.errorModifyLocale";
+      throw I18nConst.errorModifyLocale;
     }
   }
 
@@ -85,7 +86,7 @@ abstract class AppConfigControllerBase with Store {
       if (localeModify != null) {
         return await setLocale(localeModify);
       } else {
-        throw 'I18nConst.localeNotExist';
+        throw I18nConst.localeNotExist;
       }
     } catch (e) {
       errorMessage = e.toString();
