@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/core.dart';
+import '../../../core/services/font_awesome_flutter/font_awesome_flutter_widget.dart';
 import '../text_form_custom/text_form_custom.dart';
 
 class CardTextWidget extends StatelessWidget {
@@ -29,7 +29,7 @@ class CardTextWidget extends StatelessWidget {
         if (icon != null)
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: FaIcon(icon, color: AppTheme.colors.text),
+            child: FaIconWidget(icon, color: AppTheme.colors.text),
           ),
         Text(
           title,

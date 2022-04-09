@@ -1,6 +1,6 @@
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/services/google_sign_in/google_sign_in_model.dart';
 import '../../../i18n/i18n_const.dart';
 import '../datasource/api_login_datasource.dart';
 import '../model/user_model.dart';
@@ -23,7 +23,7 @@ class LoginRepository implements ILoginRepository {
   @override
   Future<UserModel> googleSignIn() async {
     try {
-      GoogleSignInAccount userGoogle = await _api.googleSignIn();
+      GoogleSignInModel userGoogle = await _api.googleSignIn();
       return UserModel.fromGoogleSignIn(userGoogle);
     } catch (e) {
       rethrow;

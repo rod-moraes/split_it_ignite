@@ -91,7 +91,6 @@ class _LoginPageState extends State<LoginPage> {
                                       dark ? ThemeMode.light : ThemeMode.dark,
                                     ),
                             ),
-                            SizedBox(height: 15.h),
                           ],
                         );
 

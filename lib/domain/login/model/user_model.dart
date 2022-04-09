@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:google_sign_in/google_sign_in.dart';
+import '../../../core/services/google_sign_in/google_sign_in_model.dart';
 
 class UserModel {
   final String name;
@@ -46,12 +45,12 @@ class UserModel {
     );
   }
 
-  factory UserModel.fromGoogleSignIn(GoogleSignInAccount userGoogle) {
+  factory UserModel.fromGoogleSignIn(GoogleSignInModel userGoogle) {
     return UserModel(
-      name: userGoogle.displayName ?? '',
+      name: userGoogle.displayName,
       email: userGoogle.email,
       id: userGoogle.id,
-      photoUrl: userGoogle.photoUrl ?? '',
+      photoUrl: userGoogle.photoUrl,
     );
   }
 

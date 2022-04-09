@@ -2,13 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/theme/app_theme.dart';
+import '../money_icon_widget/money_icon_widget.dart';
 
 class BoxMoneyWidget extends StatelessWidget {
-  final Color color;
+  final double value;
   const BoxMoneyWidget({
     Key? key,
-    required this.color,
+    required this.value,
   }) : super(key: key);
+
+  bool get isRecieved => value > 0;
+  TextStyle get style => isRecieved
+      ? AppTheme.textStyles.recieveTitle
+      : AppTheme.textStyles.payableTitle;
+
+  String get text => isRecieved ? "A receber" : "A pagar";
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +25,8 @@ class BoxMoneyWidget extends StatelessWidget {
         maxWidth: 45.w,
       ),
       child: Container(
-          width: 168,
-          height: 156,
+          width: 156,
+          height: 168,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: AppTheme.colors.border),
@@ -29,16 +37,14 @@ class BoxMoneyWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 48,
-                height: 48,
-                color: AppTheme.colors.payableOpacity,
-              ),
+              MoneyIconWidget(isRecieved: isRecieved),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('A receber', style: AppTheme.textStyles.subtitleMoney),
-                  Text('R\$ 330,00', style: AppTheme.textStyles.payableTitle),
+                  Text(text, style: AppTheme.textStyles.subtitleMoney),
+                  Text(
+                      'R\$ ${value.abs().toStringAsFixed(2).replaceFirst('.', ',')}',
+                      style: style),
                 ],
               )
             ],

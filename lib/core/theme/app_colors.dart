@@ -47,7 +47,7 @@ class AppColorsLight implements AppColors {
   Color get borderGradient => const Color(0x40FFFFFF);
 
   @override
-  Color get divider => const Color(0x33455250);
+  Color get divider => Color.fromARGB(52, 102, 102, 102);
 
   @override
   Color get icon => const Color(0xFF666666);
