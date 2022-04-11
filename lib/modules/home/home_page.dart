@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:split_it_ignite/domain/event/model/event_model.dart';
+import 'package:split_it_ignite/modules/home/home_controller.dart';
 import 'package:split_it_ignite/modules/home/widgets/box_money_widget/box_money_widget.dart';
 
 import '../../domain/login/model/user_model.dart';
@@ -15,103 +17,54 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final events = [
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: -35,
-      people: 1,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 150,
-      people: 2,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: -55,
-      people: 1,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-    EventModel(
-      title: "Churrasco",
-      created: DateTime.now(),
-      value: 35,
-      people: 12,
-    ),
-  ];
+  late HomeController homeController;
+
+  @override
+  void initState() {
+    homeController = HomeController();
+    homeController.getDashboards();
+    homeController.getEvents();
+    homeController.autoRun(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBarHomeWidget(
         onTap: () {},
         name: widget.user.name,
         photoUrl: widget.user.photoUrl,
-        boxLeft: BoxMoneyWidget(value: 124),
-        boxRight: BoxMoneyWidget(value: -48),
+        boxLeft: Observer(builder: (_) {
+          if (homeController.dashboard != null) {
+            return BoxMoneyWidget(value: homeController.dashboard!.receive);
+          } else {
+            return Container();
+          }
+        }),
+        boxRight: Observer(builder: (_) {
+          if (homeController.dashboard != null) {
+            return BoxMoneyWidget(value: homeController.dashboard!.send * -1);
+          } else {
+            return Container();
+          }
+        }),
       ),
-      body: ListView.builder(
-          itemCount: events.length,
-          padding: EdgeInsets.only(top: 40),
-          prototypeItem: EventTileWidget(event: events.first),
-          itemBuilder: (context, index) {
-            return EventTileWidget(event: events[index]);
-          }),
+      body: Observer(builder: (context) {
+        if (homeController.events.isNotEmpty) {
+          return ListView.builder(
+              itemCount: homeController.events.length,
+              padding: const EdgeInsets.only(top: 40 + 80 + 224),
+              prototypeItem:
+                  EventTileWidget(event: homeController.events.first),
+              itemBuilder: (context, index) {
+                return EventTileWidget(event: homeController.events[index]);
+              });
+        } else {
+          return Container();
+        }
+      }),
     );
   }
 }
