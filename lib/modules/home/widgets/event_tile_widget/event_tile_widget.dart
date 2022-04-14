@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:split_it_ignite/modules/home/widgets/money_icon_widget/money_icon_widget.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/core.dart';
 import '../../../../domain/event/model/event_model.dart';
@@ -38,7 +39,9 @@ class EventTileWidget extends StatelessWidget {
                           Text(event.title,
                               style: AppTheme.textStyles.textSimpleBold),
                           const SizedBox(height: 4),
-                          Text(event.created.toString(),
+                          Text(
+                              DateFormat('dd MMMM', 'pt_BR')
+                                  .format(event.created),
                               style: AppTheme.textStyles.subtitleSimple),
                         ],
                       ),

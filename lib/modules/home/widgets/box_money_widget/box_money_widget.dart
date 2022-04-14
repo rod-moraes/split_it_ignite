@@ -25,8 +25,8 @@ class BoxMoneyWidget extends StatelessWidget {
         maxWidth: 45.w,
       ),
       child: Container(
-          width: 156,
-          height: 168,
+          width: 136,
+          height: 142,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: AppTheme.colors.border),

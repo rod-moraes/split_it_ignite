@@ -9,31 +9,29 @@ class AppBarHomeWidget extends PreferredSize {
   final String name;
   final String photoUrl;
   final VoidCallback onTap;
-  final Widget boxLeft;
-  final Widget boxRight;
+  final Widget bottomAppBar;
   AppBarHomeWidget({
     Key? key,
     required this.name,
     required this.photoUrl,
     required this.onTap,
-    required this.boxLeft,
-    required this.boxRight,
+    required this.bottomAppBar,
   }) : super(
           key: key,
-          preferredSize: const Size.fromHeight(224 + 80),
+          preferredSize: const Size.fromHeight(168 + 80),
           child: SizedBox(
-            height: 224 + 80,
+            height: 168 + 80,
             child: Stack(
               children: [
                 Container(
                   decoration:
                       BoxDecoration(gradient: AppTheme.gradients.background),
                   padding: EdgeInsets.symmetric(horizontal: 4.w),
-                  height: 224,
+                  height: 168,
                   width: double.maxFinite,
                   child: ListTile(
                     contentPadding:
-                        const EdgeInsets.only(left: 8.0, right: 8.0, top: 57),
+                        const EdgeInsets.only(left: 8.0, right: 8.0, top: 40),
                     title: Text(
                       name.split(" ")[0][0].toUpperCase() +
                           name.split(" ")[0].substring(1).toLowerCase(),
@@ -57,11 +55,9 @@ class AppBarHomeWidget extends PreferredSize {
                       ],
                     )),
                 Align(
-                    alignment: const Alignment(0, 1),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [boxLeft, boxRight],
-                    )),
+                  alignment: const Alignment(0, 1),
+                  child: bottomAppBar,
+                ),
               ],
             ),
           ),

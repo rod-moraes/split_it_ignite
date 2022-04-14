@@ -26,25 +26,8 @@ abstract class _HomeControllerBase with Store {
   @observable
   ObservableList<EventModel> events = ObservableList<EventModel>();
 
-  @observable
-  DashboardModel? dashboard;
-
   @action
   Future<void> _modifyHomeState(HomeState state) async => homeState = state;
-
-  @action
-  Future<void> getDashboards() async {
-    try {
-      // LOGAR COM GOOGLE
-      await _modifyHomeState(HomeStateLoading());
-      DashboardModel dashboardModel = await _eventRepository.getDashboards();
-      dashboard = dashboardModel;
-      await _modifyHomeState(HomeStateSuccess(
-          result: dashboardModel, message: 'Sucesso ao carregar o dashboard'));
-    } catch (error) {
-      await _modifyHomeState(HomeStateFailure(message: error.toString()));
-    }
-  }
 
   @action
   Future<void> getEvents() async {
@@ -54,7 +37,7 @@ abstract class _HomeControllerBase with Store {
       List<EventModel> eventsModel = await _eventRepository.getEvents();
       events.addAll(eventsModel);
       await _modifyHomeState(HomeStateSuccess(
-          result: eventsModel, message: 'Sucesso ao carregar os eventos'));
+          events: eventsModel, message: 'Sucesso ao carregar os eventos'));
     } catch (error) {
       await _modifyHomeState(HomeStateFailure(message: error.toString()));
     }

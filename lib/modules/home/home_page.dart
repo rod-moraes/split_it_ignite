@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:split_it_ignite/domain/event/model/event_model.dart';
 import 'package:split_it_ignite/modules/home/home_controller.dart';
+import 'package:split_it_ignite/modules/home/home_state.dart';
 import 'package:split_it_ignite/modules/home/widgets/box_money_widget/box_money_widget.dart';
 
 import '../../domain/login/model/user_model.dart';
 import 'widgets/app_bar/app_bar_widget.dart';
+import 'widgets/bottom_app_bar/bottom_app_bar_widget.dart';
 import 'widgets/event_tile_widget/event_tile_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,7 +24,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     homeController = HomeController();
-    homeController.getDashboards();
     homeController.getEvents();
     homeController.autoRun(context);
     super.initState();
@@ -36,26 +37,13 @@ class _HomePageState extends State<HomePage> {
         onTap: () {},
         name: widget.user.name,
         photoUrl: widget.user.photoUrl,
-        boxLeft: Observer(builder: (_) {
-          if (homeController.dashboard != null) {
-            return BoxMoneyWidget(value: homeController.dashboard!.receive);
-          } else {
-            return Container();
-          }
-        }),
-        boxRight: Observer(builder: (_) {
-          if (homeController.dashboard != null) {
-            return BoxMoneyWidget(value: homeController.dashboard!.send * -1);
-          } else {
-            return Container();
-          }
-        }),
+        bottomAppBar: const BottomAppBarWidget(),
       ),
       body: Observer(builder: (context) {
-        if (homeController.events.isNotEmpty) {
+        if (homeController.homeState is HomeStateSuccess) {
           return ListView.builder(
               itemCount: homeController.events.length,
-              padding: const EdgeInsets.only(top: 40 + 80 + 224),
+              padding: const EdgeInsets.only(top: 40 + 80 + 168),
               prototypeItem:
                   EventTileWidget(event: homeController.events.first),
               itemBuilder: (context, index) {

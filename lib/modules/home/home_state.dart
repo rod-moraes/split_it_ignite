@@ -1,3 +1,5 @@
+import '../../domain/event/model/event_model.dart';
+
 abstract class HomeState {}
 
 class HomeStateEmpty extends HomeState {}
@@ -12,10 +14,10 @@ class HomeStateFailure extends HomeState {
 }
 
 class HomeStateSuccess extends HomeState {
-  final Object result;
+  final List<EventModel> events;
   final String message;
   HomeStateSuccess({
-    required this.result,
+    required this.events,
     required this.message,
   });
 }

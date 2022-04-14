@@ -39,21 +39,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
-  final _$dashboardAtom = Atom(name: '_HomeControllerBase.dashboard');
-
-  @override
-  DashboardModel? get dashboard {
-    _$dashboardAtom.reportRead();
-    return super.dashboard;
-  }
-
-  @override
-  set dashboard(DashboardModel? value) {
-    _$dashboardAtom.reportWrite(value, super.dashboard, () {
-      super.dashboard = value;
-    });
-  }
-
   final _$_modifyHomeStateAsyncAction =
       AsyncAction('_HomeControllerBase._modifyHomeState');
 
@@ -61,14 +46,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
   Future<void> _modifyHomeState(HomeState state) {
     return _$_modifyHomeStateAsyncAction
         .run(() => super._modifyHomeState(state));
-  }
-
-  final _$getDashboardsAsyncAction =
-      AsyncAction('_HomeControllerBase.getDashboards');
-
-  @override
-  Future<void> getDashboards() {
-    return _$getDashboardsAsyncAction.run(() => super.getDashboards());
   }
 
   final _$getEventsAsyncAction = AsyncAction('_HomeControllerBase.getEvents');
@@ -82,8 +59,7 @@ mixin _$HomeController on _HomeControllerBase, Store {
   String toString() {
     return '''
 homeState: ${homeState},
-events: ${events},
-dashboard: ${dashboard}
+events: ${events}
     ''';
   }
 }
