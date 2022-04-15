@@ -1,3 +1,5 @@
+import '../../../../domain/event/model/dashboard_model.dart';
+
 abstract class BottomAppBarState {}
 
 class BottomAppBarStateEmpty extends BottomAppBarState {}
@@ -12,10 +14,10 @@ class BottomAppBarStateFailure extends BottomAppBarState {
 }
 
 class BottomAppBarStateSuccess extends BottomAppBarState {
-  final Object result;
+  final DashboardModel dashboard;
   final String message;
   BottomAppBarStateSuccess({
-    required this.result,
+    required this.dashboard,
     required this.message,
   });
 }

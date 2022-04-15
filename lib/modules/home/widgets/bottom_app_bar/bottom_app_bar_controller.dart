@@ -38,7 +38,8 @@ abstract class _BottomAppBarControllerBase with Store {
       DashboardModel dashboardModel = await _eventRepository.getDashboards();
       dashboard = dashboardModel;
       await _modifyBottomAppBarState(BottomAppBarStateSuccess(
-          result: dashboardModel, message: 'Sucesso ao carregar o dashboard'));
+          dashboard: dashboardModel,
+          message: 'Sucesso ao carregar o dashboard'));
     } catch (error) {
       await _modifyBottomAppBarState(
           BottomAppBarStateFailure(message: error.toString()));
