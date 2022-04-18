@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:split_it_ignite/core/config/app_config_page.dart';
+import 'package:split_it_ignite/modules/create_split/create_split_page.dart';
 import 'package:split_it_ignite/modules/splash/splash_page.dart';
 import 'package:split_it_ignite/modules/login/login_page.dart';
 
@@ -12,6 +13,7 @@ class RouterClass {
   static const String splash = "/splash";
   static const String login = "/login";
   static const String home = "/home";
+  static const String createSplit = "/create_split";
 
   //FUNÇÃO DE GERAÇÃO DE ROTAS
   static Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -25,6 +27,9 @@ class RouterClass {
 
       case login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
+
+      case createSplit:
+        return MaterialPageRoute(builder: (_) => const CreateSplitPage());
 
       case home:
         Map<String, dynamic> arguments =

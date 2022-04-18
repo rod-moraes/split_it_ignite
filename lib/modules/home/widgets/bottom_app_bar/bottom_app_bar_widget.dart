@@ -34,9 +34,18 @@ class _BottomAppBarWidgetState extends State<BottomAppBarWidget> {
             BoxMoneyWidget(value: bottomAppBarController.dashboard!.send * -1),
           ],
         );
-      } else {
-        return Container();
+      } else if (bottomAppBarController.bottomAppBarState
+          is BottomAppBarStateLoading) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: const [
+            BoxMoneyWidget(value: 0, isLoading: true),
+            BoxMoneyWidget(value: 0, isLoading: true),
+          ],
+        );
+        ;
       }
+      return Container();
     });
   }
 }

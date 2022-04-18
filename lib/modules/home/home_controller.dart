@@ -3,7 +3,6 @@ import 'package:mobx/mobx.dart';
 import 'package:split_it_ignite/domain/event/repository/event_repository_mock.dart';
 
 import '../../core/core.dart';
-import '../../domain/event/model/dashboard_model.dart';
 import '../../domain/event/model/event_model.dart';
 import '../../domain/event/repository/event_repository.dart';
 import '../../i18n/i18n_const.dart';

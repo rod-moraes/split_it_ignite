@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -20,8 +21,11 @@ class AppWidget extends StatelessWidget {
       return Observer(builder: (_) {
         _controllerConfig.locale;
         return AnnotatedRegion<SystemUiOverlayStyle>(
-          value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+          value: AppTheme.colorStatus(),
           child: MaterialApp(
+            useInheritedMediaQuery: true,
+            locale: DevicePreview.locale(context),
+            builder: DevicePreview.appBuilder,
             supportedLocales: const [
               Locale('pt', 'BR'),
               Locale('es', 'ES'),

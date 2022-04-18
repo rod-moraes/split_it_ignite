@@ -3,8 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:split_it_ignite/domain/event/model/event_model.dart';
 import 'package:split_it_ignite/modules/home/home_controller.dart';
 import 'package:split_it_ignite/modules/home/home_state.dart';
-import 'package:split_it_ignite/modules/home/widgets/box_money_widget/box_money_widget.dart';
-
+import '../../core/core.dart';
 import '../../domain/login/model/user_model.dart';
 import 'widgets/app_bar/app_bar_widget.dart';
 import 'widgets/bottom_app_bar/bottom_app_bar_widget.dart';
@@ -33,8 +32,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      backgroundColor: AppTheme.colors.background,
       appBar: AppBarHomeWidget(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, RouterClass.createSplit);
+        },
         name: widget.user.name,
         photoUrl: widget.user.photoUrl,
         bottomAppBar: const BottomAppBarWidget(),
@@ -44,14 +46,26 @@ class _HomePageState extends State<HomePage> {
           return ListView.builder(
               itemCount: homeController.events.length,
               padding: const EdgeInsets.only(top: 40 + 80 + 168),
-              prototypeItem:
-                  EventTileWidget(event: homeController.events.first),
               itemBuilder: (context, index) {
                 return EventTileWidget(event: homeController.events[index]);
               });
-        } else {
-          return Container();
+        } else if (homeController.homeState is HomeStateLoading) {
+          return ListView.builder(
+              itemCount: 6,
+              padding: const EdgeInsets.only(top: 40 + 80 + 168),
+              itemBuilder: (context, index) {
+                return EventTileWidget(
+                  event: EventModel(
+                      created: DateTime.now(),
+                      people: 2,
+                      title: 'Churrasco',
+                      value: 100),
+                  isLoading: true,
+                );
+              });
         }
+
+        return Container();
       }),
     );
   }

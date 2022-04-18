@@ -160,7 +160,7 @@ class AppTextStylesDefault implements AppTextStyles {
         fontSize: 12,
         fontWeight: FontWeight.w500,
         height: 15 / 12,
-        color: AppTheme.colors.textBold,
+        color: AppTheme.colors.text,
       );
 
   @override
@@ -212,7 +212,7 @@ class AppTextStylesDefault implements AppTextStyles {
       );
 
   @override
-  TextStyle get titleSimple => GoogleFonts.roboto(
+  TextStyle get titleSimple => GoogleFonts.inter(
         fontSize: 24,
         fontWeight: FontWeight.w400,
         height: 29 / 24,
@@ -220,7 +220,7 @@ class AppTextStylesDefault implements AppTextStyles {
       );
 
   @override
-  TextStyle get titleSimpleBold => GoogleFonts.roboto(
+  TextStyle get titleSimpleBold => GoogleFonts.inter(
         fontSize: 24,
         fontWeight: FontWeight.w700,
         height: 29 / 24,
