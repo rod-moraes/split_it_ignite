@@ -30,7 +30,7 @@ class BoxMoneyWidget extends StatelessWidget {
       ),
       child: Container(
           width: 41.w,
-          height: 20.h + 14,
+          height: 18.h + 14,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: AppTheme.colors.border),
@@ -44,8 +44,8 @@ class BoxMoneyWidget extends StatelessWidget {
               MoneyIconWidget(
                 isRecieved: isRecieved,
                 isLoading: isLoading,
-                height: 8.h,
-                width: 8.h,
+                height: 8.h > 13.w ? 13.w : 8.h,
+                width: 8.h > 13.w ? 13.w : 8.h,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

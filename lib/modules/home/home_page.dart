@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:sizer/sizer.dart';
 import 'package:split_it_ignite/domain/event/model/event_model.dart';
 import 'package:split_it_ignite/modules/home/home_controller.dart';
 import 'package:split_it_ignite/modules/home/home_state.dart';
@@ -45,14 +46,14 @@ class _HomePageState extends State<HomePage> {
         if (homeController.homeState is HomeStateSuccess) {
           return ListView.builder(
               itemCount: homeController.events.length,
-              padding: const EdgeInsets.only(top: 40 + 80 + 168),
+              padding: EdgeInsets.only(top: 10.h + 80 + 168),
               itemBuilder: (context, index) {
                 return EventTileWidget(event: homeController.events[index]);
               });
         } else if (homeController.homeState is HomeStateLoading) {
           return ListView.builder(
               itemCount: 6,
-              padding: const EdgeInsets.only(top: 40 + 80 + 168),
+              padding: EdgeInsets.only(top: 10.h + 80 + 168),
               itemBuilder: (context, index) {
                 return EventTileWidget(
                   event: EventModel(

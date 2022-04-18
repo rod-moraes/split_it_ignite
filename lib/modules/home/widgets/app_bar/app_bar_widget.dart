@@ -26,7 +26,7 @@ class AppBarHomeWidget extends StatelessWidget with PreferredSizeWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: AppTheme.colorStatus(isWhite: true),
       child: SizedBox(
-        height: 192 + 10.h,
+        height: 192 + 20.h + 14,
         child: Stack(
           children: [
             Container(
