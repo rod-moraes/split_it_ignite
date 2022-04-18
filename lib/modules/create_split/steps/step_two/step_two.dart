@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
 import '../../../../shared/settings_widgets/text_form_custom/text_form_custom.dart';
+import '../../widgets/person_tile/person_tile_widget.dart';
 import '../../widgets/step_title/step_title_widget.dart';
 
 class StepTwo extends StatelessWidget {
@@ -35,7 +36,19 @@ class StepTwo extends StatelessWidget {
               focusedBorderColor: AppTheme.colors.add,
             ),
           ),
-          SizedBox(height: 60),
+          const SizedBox(height: 35),
+          PersonTileWidget(
+              isRemoved: false,
+              name: 'Tiago Luncgtenberg',
+              pathImage: AppTheme.images.avatarOne),
+          PersonTileWidget(
+              isRemoved: true,
+              name: 'Maria Antônia',
+              pathImage: AppTheme.images.avatarTwo),
+          PersonTileWidget(
+              isRemoved: true,
+              name: 'Diego Fernandes',
+              pathImage: AppTheme.images.avatarThree),
         ],
       ),
     );

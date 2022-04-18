@@ -10,7 +10,7 @@ class StepTitleWidget extends StatelessWidget {
     Key? key,
     required this.title,
     required this.subtitle,
-    this.padding = const EdgeInsets.symmetric(vertical: 40),
+    this.padding = const EdgeInsets.symmetric(vertical: 32),
   }) : super(key: key);
 
   @override
@@ -19,8 +19,16 @@ class StepTitleWidget extends StatelessWidget {
       padding: padding,
       child: Column(
         children: [
-          Text(title, style: AppTheme.textStyles.titleSimpleBold),
-          Text(subtitle, style: AppTheme.textStyles.titleSimple),
+          Text(
+            title,
+            style: AppTheme.textStyles.titleSimpleBold,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            subtitle,
+            style: AppTheme.textStyles.titleSimple,
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );

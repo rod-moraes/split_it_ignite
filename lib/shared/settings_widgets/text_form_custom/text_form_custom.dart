@@ -69,7 +69,7 @@ class TextFormCustom extends StatelessWidget {
       keyboardType:
           (maxLines ?? 2) > 1 ? TextInputType.multiline : TextInputType.text,
       style: textStyle ?? styleText,
-      cursorColor: AppTheme.colors.background,
+      cursorColor: AppTheme.colors.textBold,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: textStyle ?? styleText,

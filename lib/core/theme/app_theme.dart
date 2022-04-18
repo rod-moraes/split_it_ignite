@@ -28,7 +28,7 @@ class AppTheme {
       statusBarIconBrightness: isWhite
           ? Brightness.light
           : Brightness.dark, // ícones da barra superior
-      statusBarBrightness: isWhite ? Brightness.light : Brightness.dark,
+      statusBarBrightness: isWhite ? Brightness.dark : Brightness.light,
     );
   }
 }
