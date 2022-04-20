@@ -7,6 +7,8 @@ import 'package:split_it_ignite/modules/home/home_state.dart';
 import '../../core/core.dart';
 import '../../domain/login/model/user_model.dart';
 import 'widgets/app_bar/app_bar_widget.dart';
+import 'widgets/app_bar/button_add_app_bar_widget.dart';
+import 'widgets/app_bar/user_image_app_bar_widget.dart';
 import 'widgets/bottom_app_bar/bottom_app_bar_widget.dart';
 import 'widgets/event_tile_widget/event_tile_widget.dart';
 
@@ -31,43 +33,51 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
-      extendBodyBehindAppBar: true,
       backgroundColor: AppTheme.colors.background,
-      appBar: AppBarHomeWidget(
-        onTap: () {
-          Navigator.pushNamed(context, RouterClass.createSplit);
-        },
-        name: widget.user.name,
-        photoUrl: widget.user.photoUrl,
-        bottomAppBar: const BottomAppBarWidget(),
+      body: CustomScrollView(
+        slivers: [
+          MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            child: AppBarHomeWidget(
+              onTap: () =>
+                  Navigator.pushNamed(context, RouterClass.createSplit),
+              statusBarHeight: statusBarHeight,
+              name: widget.user.name,
+              photoUrl: widget.user.photoUrl,
+              bottomAppBar: const BottomAppBarWidget(),
+            ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 30)),
+          Observer(builder: (context) {
+            if (homeController.homeState is HomeStateSuccess) {
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) =>
+                      EventTileWidget(event: homeController.events[index]),
+                  childCount: homeController.events.length,
+                ),
+              );
+            } else if (homeController.homeState is HomeStateLoading) {
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) => EventTileWidget(
+                      event: EventModel(
+                          created: DateTime.now(),
+                          people: 2,
+                          title: 'Churrasco',
+                          value: 100),
+                      isLoading: true),
+                  childCount: 10,
+                ),
+              );
+            }
+            return Container();
+          }),
+        ],
       ),
-      body: Observer(builder: (context) {
-        if (homeController.homeState is HomeStateSuccess) {
-          return ListView.builder(
-              itemCount: homeController.events.length,
-              padding: EdgeInsets.only(top: 10.h + 80 + 168),
-              itemBuilder: (context, index) {
-                return EventTileWidget(event: homeController.events[index]);
-              });
-        } else if (homeController.homeState is HomeStateLoading) {
-          return ListView.builder(
-              itemCount: 6,
-              padding: EdgeInsets.only(top: 10.h + 80 + 168),
-              itemBuilder: (context, index) {
-                return EventTileWidget(
-                  event: EventModel(
-                      created: DateTime.now(),
-                      people: 2,
-                      title: 'Churrasco',
-                      value: 100),
-                  isLoading: true,
-                );
-              });
-        }
-
-        return Container();
-      }),
     );
   }
 }
