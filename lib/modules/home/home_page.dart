@@ -50,13 +50,19 @@ class _HomePageState extends State<HomePage> {
               bottomAppBar: const BottomAppBarWidget(),
             ),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: 30)),
+          const SliverToBoxAdapter(child: SizedBox(height: 14)),
           Observer(builder: (context) {
             if (homeController.homeState is HomeStateSuccess) {
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) =>
-                      EventTileWidget(event: homeController.events[index]),
+                  (BuildContext context, int index) => EventTileWidget(
+                    event: homeController.events[index],
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      RouterClass.editSplit,
+                      arguments: {"event": homeController.events[index]},
+                    ),
+                  ),
                   childCount: homeController.events.length,
                 ),
               );
@@ -64,12 +70,13 @@ class _HomePageState extends State<HomePage> {
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) => EventTileWidget(
-                      event: EventModel(
-                          created: DateTime.now(),
-                          people: 2,
-                          title: 'Churrasco',
-                          value: 100),
-                      isLoading: true),
+                    event: EventModel(
+                        created: DateTime.now(),
+                        people: 2,
+                        title: 'Churrasco',
+                        value: 100),
+                    isLoading: true,
+                  ),
                   childCount: 10,
                 ),
               );

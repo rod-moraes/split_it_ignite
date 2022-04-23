@@ -23,7 +23,7 @@ class TitleAppBar extends StatelessWidget {
       title: Text(
         name.split(" ")[0][0].toUpperCase() +
             name.split(" ")[0].substring(1).toLowerCase(),
-        style: AppTheme.textStyles.appBarTitle,
+        style: AppTheme.textStyles.appBarTitleGradient,
       ),
       leading: UserImageAppBar(photoUrl: photoUrl),
       trailing: ButtonAddAppBar(onTap: onTap),

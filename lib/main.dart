@@ -19,7 +19,7 @@ void main() async {
         multipleScreenshots: true,
       ),
     ],
-    enabled: true,
+    enabled: false,
     builder: (context) => AppWidget(),
   ));
 }

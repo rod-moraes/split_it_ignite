@@ -4,7 +4,9 @@ import 'package:split_it_ignite/modules/create_split/create_split_page.dart';
 import 'package:split_it_ignite/modules/splash/splash_page.dart';
 import 'package:split_it_ignite/modules/login/login_page.dart';
 
+import '../../domain/event/model/event_model.dart';
 import '../../domain/login/model/user_model.dart';
+import '../../modules/edit_split/edit_split_page.dart';
 import '../../modules/home/home_page.dart';
 
 class RouterClass {
@@ -14,6 +16,7 @@ class RouterClass {
   static const String login = "/login";
   static const String home = "/home";
   static const String createSplit = "/create_split";
+  static const String editSplit = "/edit_split";
 
   //FUNÇÃO DE GERAÇÃO DE ROTAS
   static Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -30,6 +33,12 @@ class RouterClass {
 
       case createSplit:
         return MaterialPageRoute(builder: (_) => const CreateSplitPage());
+
+      case editSplit:
+        Map<String, dynamic> arguments =
+            routeSettings.arguments as Map<String, dynamic>;
+        EventModel event = arguments["event"];
+        return MaterialPageRoute(builder: (_) => EditSplitPage(event: event));
 
       case home:
         Map<String, dynamic> arguments =

@@ -1,8 +1,8 @@
-import '../../i18n/i18n_const.dart';
-import '/modules/splash/splash_page.dart';
-
-import '/core/core.dart';
 import 'package:flutter/material.dart';
+
+import '../../i18n/i18n_const.dart';
+import '/core/core.dart';
+import '/modules/splash/splash_page.dart';
 
 class AppConfigPage extends StatefulWidget {
   const AppConfigPage({

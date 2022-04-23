@@ -14,6 +14,7 @@ abstract class AppTextStyles {
   TextStyle get payableText;
   TextStyle get subtitleMoney;
   TextStyle get textSimple;
+  TextStyle get textSimplePerson;
   TextStyle get textSimpleSemiBold;
   TextStyle get textSimpleBold;
   TextStyle get textSimpleOpacity;
@@ -27,6 +28,7 @@ abstract class AppTextStyles {
   TextStyle get headerText;
   TextStyle get headerTextContrast;
   TextStyle get appBarTitle;
+  TextStyle get appBarTitleGradient;
   TextStyle get titleGroup;
   TextStyle get textSnackBar;
   TextStyle get textTooltip;
@@ -53,11 +55,19 @@ class AppTextStylesDefault implements AppTextStyles {
       );
 
   @override
+  TextStyle get appBarTitleGradient => GoogleFonts.montserrat(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        height: 26 / 24,
+        color: AppTheme.colors.textGradient,
+      );
+
+  @override
   TextStyle get appBarTitle => GoogleFonts.montserrat(
         fontSize: 22,
-        fontWeight: FontWeight.w700,
-        height: 27 / 22,
-        color: AppTheme.colors.textGradient,
+        fontWeight: FontWeight.bold,
+        height: 26 / 24,
+        color: AppTheme.colors.textBold,
       );
 
   @override
@@ -86,7 +96,7 @@ class AppTextStylesDefault implements AppTextStyles {
   @override
   TextStyle get payableSubtitle => GoogleFonts.roboto(
         fontSize: 12,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.normal,
         height: 14 / 12,
         color: AppTheme.colors.payable,
       );
@@ -110,7 +120,7 @@ class AppTextStylesDefault implements AppTextStyles {
   @override
   TextStyle get recieveSubtitle => GoogleFonts.roboto(
         fontSize: 12,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.normal,
         height: 14 / 12,
         color: AppTheme.colors.receive,
       );
@@ -169,6 +179,14 @@ class AppTextStylesDefault implements AppTextStyles {
         fontWeight: FontWeight.w400,
         height: 19 / 16,
         color: AppTheme.colors.text,
+      );
+
+  @override
+  TextStyle get textSimplePerson => GoogleFonts.roboto(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        height: 19 / 16,
+        color: AppTheme.colors.textBold,
       );
 
   @override

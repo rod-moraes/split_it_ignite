@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
   Color get background;
+  Color get dividerBar;
   Color get receive;
   Color get receiveOpacity;
   Color get payable;
@@ -35,6 +36,9 @@ abstract class AppColors {
 
 class AppColorsLight implements AppColors {
   @override
+  Color get dividerBar => const Color(0x15434343);
+
+  @override
   Color get add => const Color(0xFF40B28C);
 
   @override
@@ -47,7 +51,7 @@ class AppColorsLight implements AppColors {
   Color get borderGradient => const Color(0x40FFFFFF);
 
   @override
-  Color get divider => Color.fromARGB(52, 102, 102, 102);
+  Color get divider => Color(0x66455250);
 
   @override
   Color get icon => const Color(0xFF666666);
@@ -121,6 +125,8 @@ class AppColorsLight implements AppColors {
 }
 
 class AppColorsDark implements AppColors {
+  @override
+  Color get dividerBar => const Color(0x15FFFFFF);
   @override
   Color get add => const Color(0xFF40B28C);
 
