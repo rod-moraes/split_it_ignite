@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:split_it_ignite/modules/edit_split/widgets/card_item_tile/card_item_tile.dart';
 import 'package:split_it_ignite/modules/edit_split/widgets/card_person_pay/card_person_pay.dart';
 
 import '../../core/core.dart';
@@ -57,13 +58,29 @@ class EditSplitPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 12),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text("ÍTENS", style: AppTheme.textStyles.titleGroup),
+                SizedBox(
+                  width: double.maxFinite,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Text("ÍTENS", style: AppTheme.textStyles.titleGroup),
+                  ),
                 ),
-                SizedBox(height: 12),
-                CardPersonPay(initialValue: true, onTap: (value) {}),
-                CardPersonPay(initialValue: true, onTap: (value) {}),
+              ],
+            ),
+          ),
+          Divider(color: Colors.black),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CardItemTileWidget(),
+                CardItemTileWidget(),
+                CardItemTileWidget(),
+                CardItemTileWidget(),
+                CardItemTileWidget(),
+                CardItemTileWidget(),
               ],
             ),
           ),
