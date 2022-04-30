@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:split_it_ignite/core/utils/format_string/format_string_utils.dart';
 
 import '../../../../core/core.dart';
@@ -6,12 +7,14 @@ import '../checkbox_pay_tile/checkbox_pay_tile.dart';
 
 class CardPersonPay extends StatefulWidget {
   final String name;
+  final String avatarLink;
   final double value;
   final bool initialValue;
   final Function(bool) onTap;
   const CardPersonPay({
     Key? key,
     required this.name,
+    required this.avatarLink,
     required this.value,
     required this.initialValue,
     required this.onTap,
@@ -57,7 +60,7 @@ class _CardPersonPayState extends State<CardPersonPay> {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Image.asset(
-            AppTheme.images.avatarOne,
+            widget.avatarLink,
             width: 40,
             height: 40,
           ),
