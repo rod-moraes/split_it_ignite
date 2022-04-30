@@ -12,6 +12,8 @@ abstract class AppTextStyles {
   TextStyle get payableSubtitle;
   TextStyle get recieveText;
   TextStyle get payableText;
+
+  TextStyle get payableTextBold;
   TextStyle get subtitleMoney;
   TextStyle get textSimple;
   TextStyle get textSimplePerson;
@@ -105,6 +107,14 @@ class AppTextStylesDefault implements AppTextStyles {
   TextStyle get payableText => GoogleFonts.roboto(
         fontSize: 16,
         fontWeight: FontWeight.w400,
+        height: 19 / 16,
+        color: AppTheme.colors.payable,
+      );
+
+  @override
+  TextStyle get payableTextBold => GoogleFonts.roboto(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
         height: 19 / 16,
         color: AppTheme.colors.payable,
       );

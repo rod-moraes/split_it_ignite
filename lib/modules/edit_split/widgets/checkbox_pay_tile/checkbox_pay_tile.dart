@@ -19,7 +19,7 @@ class CheckboxPayTile extends StatelessWidget {
       : BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: border,
-          color: Colors.white,
+          color: AppTheme.colors.background,
           border: Border.all(
             width: 1.5,
             color: const Color(0xffC0CCC9),

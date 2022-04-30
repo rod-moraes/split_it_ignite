@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:split_it_ignite/core/utils/format_string/format_string_utils.dart';
 
 import '../../../../core/core.dart';
 import '../checkbox_pay_tile/checkbox_pay_tile.dart';
 
 class CardPersonPay extends StatefulWidget {
+  final String name;
+  final double value;
   final bool initialValue;
   final Function(bool) onTap;
   const CardPersonPay({
     Key? key,
+    required this.name,
+    required this.value,
     required this.initialValue,
     required this.onTap,
   }) : super(key: key);
@@ -58,7 +63,7 @@ class _CardPersonPayState extends State<CardPersonPay> {
           ),
         ),
         title: Text(
-          "Você",
+          widget.name,
           style: AppTheme.textStyles.textSimplePerson,
         ),
         subtitle: Text.rich(
@@ -69,7 +74,7 @@ class _CardPersonPayState extends State<CardPersonPay> {
               ),
               children: [
                 TextSpan(
-                  text: "126,00",
+                  text: FormatStringUtils.formatMoney(widget.value),
                   style: style.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
